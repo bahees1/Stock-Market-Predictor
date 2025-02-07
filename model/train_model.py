@@ -8,8 +8,10 @@ from sklearn.preprocessing import MinMaxScaler
 #Preprocess data(feature selection, scaling, etc...)
 def preprocess_data(data):
     #feature selection: We can get things like High, Low, Volume, etc...
+    data['Volume'] = data['Volume'].fillna('0').replace({'K': '*1e3', 'M': '*1e6', 'B': '*1e9'}, regex=True).map(pd.eval).astype(float)
     features = data[['Open', 'High', 'Low', 'Volume']].values
-    target = data['Close'].values
+    
+    target = data['Price'].values
 
     #Normalize features 
     scaler = MinMaxScaler(feature_range=(0,1))
@@ -22,7 +24,7 @@ def preprocess_data(data):
 
 
 #load the given stock data
-data = pd.read_csv('data/stock_data.csv')
+data = pd.read_csv('C:/Users/Sarujan/Desktop/VSCODE PROJECTS/Stock-Market-Predictor/data/stock_data.csv')
 
 #start by preprocessing data
 X, y = preprocess_data(data)
@@ -44,4 +46,4 @@ model.compile(optimizer='adam', loss='mean_squared_error')
 model.fit(X_train, y_train, epochs = 50, batch_size =32, validation_split=0.2)
 
 #save the model 
-model.save('mode/model.h5')
+model.save('model/model.h5')
