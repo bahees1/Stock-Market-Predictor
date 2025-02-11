@@ -1,1 +1,9 @@
 # Stock-Market-Predictor
+
+This is an individual stock price prediction app, that allows the user to upload a .csv file of their favourite stock's historical data. The app then uses the LSTM-trained model to analyze the given stock data to make its  prediction of the price over time.
+
+## How it's made:
+This stock prediction app is built using **Python**, leveraging powerful data analysis and machine learning libraries such as **Pandas, NumPy, and Scikit-learn**. The app processes large time-series datasets of stock prices, normalizes the data, and uses LSTM (Long Short-Term Memory) networks to predict future stock trends. The prediction results are visualized through dynamic charts created with **Matplotlib**, allowing users to compare actual vs predicted prices. The app follows ETL (Extract, Transform, Load) principles, enabling users to upload CSV files containing stock data, which are cleaned and processed for machine learning predictions. Users can download the predicted results for further analysis. Git was used for version control and project management, ensuring smooth development throughout the project.
+
+## Optimizations:
+Initially, the app was built using a **linear regression model** to predict stock prices, which provided a basic understanding of stock trends based on historical data. However, we refactored the code to incorporate an **LSTM (Long Short-Term Memory)** model, which is better suited for capturing the sequential dependencies in time-series data like stock prices. LSTM networks can learn patterns over long time periods and account for the inherent volatility in stock markets, leading to more accurate and reliable predictions. This refactor significantly improved the model’s ability to predict future stock prices, increasing the overall accuracy and capturing complex trends that linear regression could not.
